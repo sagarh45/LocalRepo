@@ -1,9 +1,64 @@
 <!doctype html>
 <html>
   <head>
-    <title>This is the title of the webpage! Hello</title>
+    <title>Number Input Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 500px;
+        margin: 50px auto;
+        text-align: center;
+      }
+      input[type="number"] {
+        padding: 10px;
+        font-size: 16px;
+        width: 200px;
+        margin: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      #result {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #333;
+      }
+    </style>
   </head>
   <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
+    <h1>Enter a Number</h1>
+    <p>Please enter a number below:</p>
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <br />
+    <button onclick="submitNumber()">Submit</button>
+    <div id="result"></div>
+
+    <script>
+      function submitNumber() {
+        var input = document.getElementById("numberInput").value;
+        var resultDiv = document.getElementById("result");
+
+        if (input === "") {
+          resultDiv.innerHTML = "<p style='color:red;'>Please enter a number.</p>";
+          return;
+        }
+
+        var number = parseFloat(input);
+        resultDiv.innerHTML =
+          "<p>You entered: <strong>" + number + "</strong></p>" +
+          "<p>Square: <strong>" + (number * number) + "</strong></p>" +
+          "<p>Double: <strong>" + (number * 2) + "</strong></p>" +
+          "<p>Is Even: <strong>" + (number % 2 === 0 ? "Yes" : "No") + "</strong></p>";
+      }
+    </script>
   </body>
 </html>
